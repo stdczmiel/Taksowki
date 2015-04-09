@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 
 // Zmiana 
 //Zmiana 2
+//Zmiana 3
 
 namespace Taksowki
 {
