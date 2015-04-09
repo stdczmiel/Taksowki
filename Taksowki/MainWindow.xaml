@@ -1,0 +1,88 @@
+﻿<Window x:Class="Taksowki.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:src="clr-namespace:Taksowki" 
+        Title="MainWindow" Height="640" Width="1280">
+
+    <Window.Resources>
+        <Style x:Key="TxtStyle" TargetType="{x:Type TextBlock}">
+            <Setter Property="HorizontalAlignment" Value="Center" />
+        </Style>
+
+        <DataTemplate DataType="{x:Type src:Kierowca}">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition Width="150" />
+                    <ColumnDefinition Width="150" />
+                    <ColumnDefinition Width="150" />
+                    <ColumnDefinition Width="150" />
+                    <ColumnDefinition Width="150" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Grid.Row="0" Grid.Column="0" Style="{StaticResource TxtStyle}">Kierowca_</TextBlock>
+                <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding Path=Id}" />
+                <TextBlock Grid.Row="0" Grid.Column="2" Style="{StaticResource TxtStyle}">Zlecenie</TextBlock>
+                <TextBlock Grid.Row="0" Grid.Column="3" Style="{StaticResource TxtStyle}">Zadana godzina</TextBlock>
+                <TextBlock Grid.Row="0" Grid.Column="4" Style="{StaticResource TxtStyle}">Godzina</TextBlock>
+                <TextBlock Grid.Row="0" Grid.Column="5" Style="{StaticResource TxtStyle}">Opoznienie</TextBlock>
+                <TextBlock Grid.Row="0" Grid.Column="6" Style="{StaticResource TxtStyle}">Czas dojazdu</TextBlock>
+                <TextBlock Grid.Row="0" Grid.Column="7" Style="{StaticResource TxtStyle}">Czas przejazdu</TextBlock>
+                <ListView Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="5" ItemsSource="{Binding ListaZlecen}" />
+
+            </Grid>
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type src:Realizacja}">
+            <Grid >
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="150" />
+                    <ColumnDefinition Width="150" />
+                    <ColumnDefinition Width="150" />
+                    <ColumnDefinition Width="150" />
+                    <ColumnDefinition Width="150" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+
+
+                <TextBlock  Grid.Row="0" Grid.Column="0" Style="{StaticResource TxtStyle}" Text="{Binding Path=ID }" />
+                <TextBlock  Grid.Row="0" Grid.Column="1" Style="{StaticResource TxtStyle}" Text="{Binding Path=ZadanaGodzina, StringFormat=F2 }" />
+                <TextBlock  Grid.Row="0" Grid.Column="2" Style="{StaticResource TxtStyle}" Text="{Binding Path=Godzina, StringFormat=F2 }" />
+                <TextBlock  Grid.Row="0" Grid.Column="3" Style="{StaticResource TxtStyle}" Text="{Binding Path=Opoznienie, StringFormat=F2 }" />
+                <TextBlock  Grid.Row="0" Grid.Column="4" Style="{StaticResource TxtStyle}" Text="{Binding Path=CzasDojazdu, StringFormat=F2 }" />
+                <TextBlock  Grid.Row="0" Grid.Column="5" Style="{StaticResource TxtStyle}" Text="{Binding Path=CzasPrzejazdu, StringFormat=F2 }" />
+
+                <Line Grid.Row="1" Grid.Column="0"  Grid.ColumnSpan="5" VerticalAlignment="Center" Stroke="Black" StrokeThickness="1"  X2="{Binding Path=ActualWidth, RelativeSource={RelativeSource Self}}" />
+
+            </Grid>
+        </DataTemplate>
+    </Window.Resources>
+
+    <StackPanel VerticalAlignment="Top">
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Margin="10">
+            <StackPanel>
+                <TextBox x:Name="textbox_skad1" Height="23" TextWrapping="Wrap" Text="51.099287" Width="120"/>
+                <TextBox x:Name="textbox_skad2" Height="23" TextWrapping="Wrap" Text="17.033717" Width="120"/>
+            </StackPanel>
+            <StackPanel>
+                <TextBox x:Name="textbox_dokad1" Height="23" TextWrapping="Wrap" Text="51.111424" Width="120"/>
+                <TextBox x:Name="textbox_dokad2" Height="23" TextWrapping="Wrap" Text="17.039077" Width="120"/>
+            </StackPanel>
+            <TextBox x:Name="textbox_godzina" Height="23" TextWrapping="Wrap" Text="100" Width="120"/>
+            <Button x:Name="buttonDodaj" Content="Dodaj Zlecenie" Width="121" Click="buttonDodaj_Click"/>
+            <Label Content="Funkcja celu = " Height="26" Width="95"/>
+            <Label Name="Label_funkcjaCelu" Content="" Height="26" Width="95"/>
+        </StackPanel>
+        <ListView x:Name="listviewHarmonogram" Height="500" Margin="10" />
+    </StackPanel>
+</Window>
