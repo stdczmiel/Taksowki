@@ -34,9 +34,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="MySql.Data, Version=6.9.6.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Configuration.Install" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Transactions" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -57,6 +63,11 @@
     <Compile Include="Realizacja.cs" />
     <Compile Include="Kierowca.cs" />
     <Compile Include="TabuSearch.cs" />
+    <Compile Include="Taxi.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Taxi.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Zlecenie.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -95,6 +106,16 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
+    <None Include="Taxi.xsc">
+      <DependentUpon>Taxi.xsd</DependentUpon>
+    </None>
+    <None Include="Taxi.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Taxi.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Taxi.xss">
+      <DependentUpon>Taxi.xsd</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
